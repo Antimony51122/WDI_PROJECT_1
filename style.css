@@ -1,18 +1,97 @@
-#GameBoardCanvas {
+/*#GameBoardCanvas {
   border: 1px solid red;
-  /*position: */
   padding: 5px;
   margin-left: auto;
   margin-right: auto;
-}
+}*/
 
 body {
-  background: black;
+  /*background: black;*/
   padding: 5px;
 }
 
-img {
-  position: absolute;
-  left: 11px;
-  top: 11px;
+ul {
+  width: 1100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  width: 100px;
+  height: 100px;
+  float: left;
+}
+
+
+
+.w {
+  background: url(http://i.imgur.com/MybdQyC.png) no-repeat center center;
+}
+
+.a {
+  background: url(http://i.imgur.com/ahlmGhO.jpg) no-repeat center center;
+}
+
+.b {
+  background: url(http://i.imgur.com/MybdQyC.png) no-repeat center center;
+}
+
+.g {
+  background: url(http://i.imgur.com/Q9k9sn2.gif) no-repeat center center;
+}
+
+.s {
+  background: url(http://i.imgur.com/iQPV4Ao.gif) no-repeat center center;
+}
+
+.taken {
+  background: url(http://i.imgur.com/8ljBmFb.png) no-repeat center center;
+}
+
+.luke {
+  background: url(http://i.imgur.com/XdYv1iq.gif) no-repeat center center;
+}
+
+.lukeLeft {
+  background: url(http://i.imgur.com/f6XAOYU.gif) no-repeat center center;
+}
+
+.lukeRight {
+  background: url(http://i.imgur.com/XdYv1iq.gif) no-repeat center center;
+}
+
+.lukeUp {
+  background: url(http://i.imgur.com/JpIcrek.gif) no-repeat center center;
+}
+
+.lukeDown {
+  background: url(http://i.imgur.com/Yj4XkKP.gif) no-repeat center center;
+}
+
+.lukeLeftSword {
+  background: url(http://i.imgur.com/f3DkR0H.gif) no-repeat center center;
+}
+
+.lukeRightSword {
+  background: url(http://i.imgur.com/hWeIyOD.gif) no-repeat center center;
+}
+
+.lukeUpSword {
+  background: url(http://i.imgur.com/iiWuZA7.gif) no-repeat center center;
+}
+
+.lukeDownSword {
+  background: url(http://i.imgur.com/CiJxslQ.gif) no-repeat center center;
+}
+
+.w, .a, .b, .g, .s, .taken,
+.luke,
+.lukeLeft, .lukeRight, .lukeUp, .lukeDown,
+.lukeLeftSword, .lukeRightSword, .lukeUpSword, .lukeDownSword {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
