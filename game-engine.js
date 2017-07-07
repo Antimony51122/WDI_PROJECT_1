@@ -1,19 +1,23 @@
-// spray mario over top
+var row0 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
+var row1 = [ 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'w'];
+var row2 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'b', 'b', 'a', 'a', 'w', 'w', 'w', 'a', 'w'];
+var row3 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+var row4 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+var row5 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+var row6 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 's', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+var row7 = [ 'w', 'a', 'a', 'w', 'a', 'w', 'a', 'a', 'b', 'b', 'b', 'a', 'a', 'w', 'w', 'w', 'a', 'w'];
+var row8 = [ 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'g', 'w'];
+var row9 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
 
-var row0 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
-var row1 = [ 'a', 'a', 'w', 'a', 'a', 'a', 'a', 'a', 'w', 'a', 'a'];
-var row2 = [ 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'g'];
-var row3 = [ 'a', 'a', 'a', 'a', 'a', 's', 'a', 'a', 'a', 'a', 'a'];
-var row4 = [ 'a', 'a', 'w', 'a', 'a', 'a', 'a', 'a', 'w', 'a', 'a'];
-var row5 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
-
-var array = [row0, row1, row2, row3, row4, row5];
-
-// waiting for the dom to be loaded then running the init function
-$(init);
+var array = [row0, row1, row2, row3, row4, row5, row6, row7, row8, row9];
 
 var swordOrNot = false;
-var winOrNot = false;
+var joinDarkOrNot = false;
+var murderFatherOrNot = false;
+
+// waiting for the dom to be loaded then running the init function
+// $(init);
+window.addEventListener('DOMContentLoaded', $(init));
 
 function init() {
   createBoard();
@@ -30,18 +34,19 @@ function createBoard() {
 }
 
 function dropCharacter() {
-  $('li:nth-child(12)').addClass('luke'); // nth-child(n) n must be a number
-  // $('li:nth-child(12)').addClass('lukeRight');
+  $('li:nth-child(20)').addClass('luke'); // nth-child(n) n must be a number
 }
 
+// reference to get current Luke position
 function currentLukeIndex() {
   // always use .luke as the position reference
   const currentLiIndex = $('li').index($('li.luke'));
   return currentLiIndex;
 }
 
+// series plausible actions that Luke could take
 function moveLeftNext() {
-  const newLiLeft= $('li')[currentLukeIndex() - 1];
+  const newLiLeft = $('li')[currentLukeIndex() - 1];
   if (swordOrNot === false) {
     // use .luke as position reference and add real actions by overlapping onto top
     $('li.luke').removeClass('luke');
@@ -63,6 +68,9 @@ function moveLeftNext() {
     // remove other residual effects from all previous possible actions with Sword
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
 
+    // remove luke killing action
+    $('li').removeClass('lukeKill');
+
     // adding real direction actions after sword by overlapping onto top of .luke
     $(newLiLeft).addClass('lukeLeftSword');
   }
@@ -83,6 +91,7 @@ function moveRightNext() {
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
+    $('li').removeClass('lukeKill');
 
     $(newLiRight).addClass('lukeRightSword');
   }
@@ -103,6 +112,7 @@ function moveUpNext() {
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
+    $('li').removeClass('lukeKill');
 
     $(newLiUp).addClass('lukeUpSword');
   }
@@ -123,6 +133,7 @@ function moveDownNext() {
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
+    $('li').removeClass('lukeKill');
 
     $(newLiDown).addClass('lukeDownSword');
   }
@@ -158,6 +169,9 @@ function pushLeftNext() {
     // remove other residual effects from all previous possible actions with Sword
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
 
+    // remove luke killing action
+    $('li').removeClass('lukeKill');
+
     // adding real direction actions after sword by overlapping onto top of .luke
     $(newLiLeft).addClass('lukeLeftSword');
 
@@ -177,11 +191,9 @@ function pushRightNext() {
     $(newLiRight).addClass('luke');
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
     $(newLiRight).addClass('lukeRight');
 
     $(newLiRight).addClass('a').removeClass('b');
-
     $(newLiRightAfter).addClass('b').removeClass('a');
   } else {
     $('li.luke').removeClass('luke');
@@ -189,11 +201,10 @@ function pushRightNext() {
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-
+    $('li').removeClass('lukeKill');
     $(newLiRight).addClass('lukeRightSword');
 
     $(newLiRight).addClass('a').removeClass('b');
-
     $(newLiRightAfter).addClass('b').removeClass('a');
   }
 }
@@ -206,11 +217,9 @@ function pushUpNext() {
     $(newLiUp).addClass('luke');
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
     $(newLiUp).addClass('lukeUp');
 
     $(newLiUp).addClass('a').removeClass('b');
-
     $(newLiUpAbove).addClass('b').removeClass('a');
   } else {
     $('li.luke').removeClass('luke');
@@ -218,11 +227,10 @@ function pushUpNext() {
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-
+    $('li').removeClass('lukeKill');
     $(newLiUp).addClass('lukeUpSword');
 
     $(newLiUp).addClass('a').removeClass('b');
-
     $(newLiUpAbove).addClass('b').removeClass('a');
   }
 }
@@ -235,11 +243,9 @@ function pushDownNext() {
     $(newLiDown).addClass('luke');
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
     $(newLiDown).addClass('lukeDown');
 
     $(newLiDown).addClass('a').removeClass('b');
-
     $(newLiDownBelow).addClass('b').removeClass('a');
   } else {
     $('li.luke').removeClass('luke');
@@ -247,11 +253,10 @@ function pushDownNext() {
 
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-
+    $('li').removeClass('lukeKill');
     $(newLiDown).addClass('lukeDownSword');
 
     $(newLiDown).addClass('a').removeClass('b');
-
     $(newLiDownBelow).addClass('b').removeClass('a');
   }
 }
@@ -266,13 +271,28 @@ function pickSword() {
     $('li.s').removeClass('s');
     swordOrNot = true;
     // here play mario win music
+    const audioMarioWin = document.getElementById('audioM');
+    audioMarioWin.src = 'audio/superMarioWin.mp3';
+    audioMarioWin.play();
   }
   console.log(swordOrNot);
   return swordOrNot;
 }
 
+function murderDarthVador() {
+  // const newLiRight = $('li')[currentLukeIndex() + 1];
+  $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
+  $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
+
+  $('li.luke').addClass('lukeKill');
+  // $('li.luke').removeClass('luke');
+
+  murderFatherOrNot = true;
+}
+
 $(document).keydown(function(e){
   if((e.which === 38) // up arrow
+  // the block next in the moving direction is nether wall nor box
   && ($($('li')[currentLukeIndex() - row0.length]).attr('class') !== 'w')
   && ($($('li')[currentLukeIndex() - row0.length]).attr('class') !== 'b')) {
     moveUpNext();
@@ -293,63 +313,101 @@ $(document).keydown(function(e){
     moveRightNext();
     pickSword();
   } else if ((e.which === 38) // down arrow
+  // the block next in the moving direction is nether wall nor box
   && ($($('li')[currentLukeIndex() - row0.length]).attr('class') !== 'w')
   && ($($('li')[currentLukeIndex() - row0.length]).attr('class') === 'b')
+  // the block 2 next after can neither be wall, box, sword nor goal
   && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 'w')
-  && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 'b')) {
+  && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 'b')
+  && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 's')
+  && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 'g')) {
     pushUpNext();
     pickSword();
   } else if ((e.which === 40) // down arrow
   && ($($('li')[currentLukeIndex() + row0.length]).attr('class') !== 'w')
   && ($($('li')[currentLukeIndex() + row0.length]).attr('class') === 'b')
   && ($($('li')[currentLukeIndex() + (row0.length * 2)]).attr('class') !== 'w')
-  && ($($('li')[currentLukeIndex() + (row0.length * 2)]).attr('class') !== 'b')) {
+  && ($($('li')[currentLukeIndex() + (row0.length * 2)]).attr('class') !== 'b')
+  && ($($('li')[currentLukeIndex() + (row0.length * 2)]).attr('class') !== 's')
+  && ($($('li')[currentLukeIndex() + (row0.length * 2)]).attr('class') !== 'g')) {
     pushDownNext();
     pickSword();
   } else if ((e.which === 37) // left arrow
   && ($($('li')[currentLukeIndex() - 1]).attr('class') !== 'w')
   && ($($('li')[currentLukeIndex() - 1]).attr('class') === 'b')
   && ($($('li')[currentLukeIndex() - 2]).attr('class') !== 'w')
-  && ($($('li')[currentLukeIndex() - 2]).attr('class') !== 'b')) {
+  && ($($('li')[currentLukeIndex() - 2]).attr('class') !== 'b')
+  && ($($('li')[currentLukeIndex() - 2]).attr('class') !== 's')
+  && ($($('li')[currentLukeIndex() - 2]).attr('class') !== 'g')) {
     pushLeftNext();
     pickSword();
   } else if ((e.which === 39) // right arrow
   && ($($('li')[currentLukeIndex() + 1]).attr('class') !== 'w')
   && ($($('li')[currentLukeIndex() + 1]).attr('class') === 'b')
   && ($($('li')[currentLukeIndex() + 2]).attr('class') !== 'w')
-  && ($($('li')[currentLukeIndex() + 2]).attr('class') !== 'b')) {
+  && ($($('li')[currentLukeIndex() + 2]).attr('class') !== 'b')
+  && ($($('li')[currentLukeIndex() + 2]).attr('class') !== 's')
+  && ($($('li')[currentLukeIndex() + 2]).attr('class') !== 'g')) {
     pushRightNext();
     pickSword();
+  } else if ((e.which === 69) // e key: execute
+  && (swordOrNot === true)
+  && ($($('li')[currentLukeIndex() + 1]).attr('class') === 'g')) {
+    murderDarthVador();
   }
   console.log($($('li')[currentLukeIndex()]).attr('class'));
-  console.log(winCondition());
+  console.log(joinDarkCondition());
+  console.log(murderFatherCondition());
 });
 
-// function alertWin() {
-//   if (winCondition() === true) {
-//     alert('win');
-//   }
-// }
-// alertWin();
 
-// $(document).keyup(function(){
-//   // change back to ordinary picture.
-//   $('li.luke').removeClass('luke');
-//   $(currentLukeIndex()).addClass('luke');
-// });
-
-function winCondition() {
+function joinDarkCondition() {
   if ((swordOrNot === true) &&
   (($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeLeftSword')
   || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeRightSword')
   || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeUpSword')
   || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeDownSword')) ) {
-    winOrNot = true;
+    joinDarkOrNot = true;
   }
-  return winOrNot;
+  // while (joinDarkOrNot) {
+  //   alert('you have joined the DARK SIDE!');
+  //   joinDarkOrNot = false;
+  // }
+  if (joinDarkOrNot === true) {
+    setTimeout(function() {
+      $('ul').fadeOut(5000, 'swing', removeUl());
+    }, 1000);
+  }
+  return joinDarkOrNot;
 }
 
+function murderFatherCondition() {
+  // while (murderFatherOrNot) {
+  //   alert('you murder your FATHER!');
+  //   murderFatherOrNot = false;
+  // }
+  if (murderFatherOrNot === true) {
+    setTimeout(function() {
+      $('ul').fadeOut(5000, 'swing', removeUl());
+    }, 4000);
+  }
+  return murderFatherOrNot;
+}
 
+function removeUl() {
+  setTimeout(function() {
+    $('ul').remove(); // remove the game board
+    showAftermath(); // trigger the consequence page
+  }, 5000);
+}
+
+function showAftermath() {
+  if (murderFatherOrNot === true) {
+    $('#aftermathM').fadeIn('slow', 'swing');
+  } else if (joinDarkOrNot === true) {
+    $('#aftermathJ').fadeIn('slow', 'swing');
+  }
+}
 
 // var legalM = [];
 // function canMove(){

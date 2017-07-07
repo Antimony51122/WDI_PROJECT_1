@@ -7,23 +7,23 @@
 
 body {
   /*background: black;*/
-  padding: 5px;
+  padding: 0px;
 }
 
 ul {
-  width: 1100px;
-  height: 100px;
-  margin: 0;
+  width: 1350px;
+  height: 75px;
+  margin: 15px;
   padding: 0;
   list-style: none;
+  display: none;
 }
 
 li {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
   float: left;
 }
-
 
 
 .w {
@@ -35,7 +35,7 @@ li {
 }
 
 .b {
-  background: url(http://i.imgur.com/MybdQyC.png) no-repeat center center;
+  background: url(http://i.imgur.com/882gHGa.png) no-repeat center center;
 }
 
 .g {
@@ -86,10 +86,15 @@ li {
   background: url(http://i.imgur.com/CiJxslQ.gif) no-repeat center center;
 }
 
+.lukeKill {
+  background: url(http://i.imgur.com/clxLYpd.gif) no-repeat center center;
+}
+
 .w, .a, .b, .g, .s, .taken,
 .luke,
 .lukeLeft, .lukeRight, .lukeUp, .lukeDown,
-.lukeLeftSword, .lukeRightSword, .lukeUpSword, .lukeDownSword {
+.lukeLeftSword, .lukeRightSword, .lukeUpSword, .lukeDownSword,
+.lukeKill {
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

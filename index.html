@@ -1,23 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Maze Game</title>
-  <link rel="stylesheet" href="style.css">
-  <script
-  src="https://code.jquery.com/jquery-3.2.1.min.js"
-  integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-  crossorigin="anonymous"></script>
-</head>
-<body>
-  <!-- <canvas id="GameBoardCanvas" width="440px" height="440px"></canvas> -->
+  <head>
+    <meta charset="UTF-8">
+    <title>Darth Vador Maze Game</title>
 
-  <ul class="board"></ul>
+    <!-- stylesheet for the intro & conseq page -->
+    <link rel="stylesheet" href="styleIntroConseq.css">
+    <!-- font reference for "Luke" in intro page -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
+
+    <!-- stylesheet for the game board -->
+    <link rel="stylesheet" href="styleGame.css">
+
+    <!-- jQuery lib reference -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- pre-intro music controlling part -->
+    <audio id="audio"></audio>
+
+    <div id="ready">Are you ready for the</div>
+    <div id="dark">Dark Side?</div>
+    <div id="play">&#9658;</div>
+
+    <!-- main intro page to enter the game -->
+    <p id="luke1stTime">
+      L<font color="red">u</font>ke<font color="red">,</font>
+    </p>
+    <div class="words i-am">I am</div>
+    <div class="words your">your</div>
+    <div class="words father">father</div>
+    <input type="enter" name="" class="loadGame" value="Join The Dark Side">
+    <img class="darthV" src="http://i.imgur.com/xUWrqKg.png">
+
+    <!-- JS file for the intro part -->
+    <script type="text/javascript" src="intro.js"></script>
 
 
-  <!-- <a href="http://imgur.com/9Nw0UWX"><img class="mario" src="http://i.imgur.com/9Nw0UWX.jpg" title="source: imgur.com" /></a> -->
+    <!-- GameBoard Part -->
+    <ul class="board"></ul>
+    <!-- super mario win stage music -->
+    <audio id="audioM"></audio>
 
-  <script src="app.js"></script>
+    <!-- JS file for the game logic -->
+    <script type="text/javascript" src="game-engine.js"></script>
 
-</body>
+
+    <!-- consequence Murder page -->
+    <p class="lukeM">
+      L<font color="red">u</font>ke<font color="red">,</font>
+    </p>
+    <div id="you-murder">you murdered</div>
+    <div id="your-father">your father</div>
+    <img class="darthVDeath" src="http://i.imgur.com/yMDUZMl.gif">
+    <input type="enterOver" name="" class="game-over" value="Game Over">
+
+    <audio id="audio2"></audio>
+
+    <!-- consequence Join page -->
+    <p class="lukeJ">
+      L<font color="red">u</font>ke<font color="red">,</font>
+    </p>
+    <div id="your-father1">your father</div>
+    <div id="is-actually">is actually</div>
+    <img class="darthTrump" src="http://i.imgur.com/K8YsuGO.gif">
+    <img class="taxiVador" src="http://i.imgur.com/0h2xV4K.jpg">
+    <input type="suprise" name="" class="surprise" value="Surprise">
+
+    <audio id="audio3"></audio>
+
+    <!-- click to display aftermath in two different versions -->
+    <div id="aftermathM">Aftermath...</div>
+    <div id="aftermathJ">Aftermath...</div>
+
+    <!-- JS file for the consequence part -->
+    <script type="text/javascript" src="Conseq.js"></script>
+  </body>
 </html>

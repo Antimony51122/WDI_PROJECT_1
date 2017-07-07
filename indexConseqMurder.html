@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Aftermath</title>
+
+    <!-- stylesheet for the intro page -->
+    <link rel="stylesheet" href="styleIntroConseq.css">
+    <!-- font reference for "Luke" in intro page -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Amatic SC">
+
+    <!-- stylesheet for the game board -->
+    <link rel="stylesheet" href="styleGame.css">
+
+    <!-- jQuery lib reference -->
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <!-- consequence Murder page -->
+    <p class="lukeM">
+      L<font color="red">u</font>ke<font color="red">,</font>
+    </p>
+    <div id="you-murder">you murder</div>
+    <div id="your-father">your father</div>
+
+    <img class="darthVDeath" src="http://i.imgur.com/yMDUZMl.gif">
+
+    <input type="enterOver" name="" value="Game over">
+
+    <audio id="audio2"></audio>
+
+    <!-- consequence Join page -->
+    <p class="lukeJ">
+      L<font color="red">u</font>ke<font color="red">,</font>
+    </p>
+    <div id="your-father1">your father</div>
+    <div id="is-actually">is actually</div>
+
+    <!-- click to display aftermath -->
+    <div id="aftermathM">Aftermath...</div>
+    <div id="aftermathJ">Aftermath...</div>
+
+    <!-- JS file for the consequence part -->
+    <script type="text/javascript" src="Conseq.js"></script>
+  </body>
+</html>
