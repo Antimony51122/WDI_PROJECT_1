@@ -100,7 +100,7 @@ function playMarioDieMusic() {
       this.currentTime = 0;
       this.play();
     }, false);
-  }, 5500);
+  }, 4500);
 }
 
 $('#aftermathJ').click(function() {

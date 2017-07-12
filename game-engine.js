@@ -9,7 +9,7 @@ var row7 = [ 'w', 'a', 'a', 'w', 'a', 'w', 'a', 'a', 'b', 'b', 'b', 'a', 'a', 'w
 var row8 = [ 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'g', 'w'];
 var row9 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
 
-var array = [row0, row1, row2, row3, row4, row5, row6, row7, row8, row9];
+var board = [row0, row1, row2, row3, row4, row5, row6, row7, row8, row9];
 
 var swordOrNot = false;
 var joinDarkOrNot = false;
@@ -25,10 +25,10 @@ function init() {
 }
 
 function createBoard() {
-  // for every item inside the array, i want to create an li and append it to the ul inside the html
-  for (var i = 0; i < array.length; i++) {
-    for (var j = 0; j < array[i].length; j++) {
-      $(`<li class="${array[i][j]}"></li>`).appendTo($('.board'));
+  // for every item inside the board, i want to create an li and append it to the ul inside the html
+  for (var i = 0; i < board.length; i++) {
+    for (var j = 0; j < board[i].length; j++) {
+      $(`<li class="${board[i][j]}"></li>`).appendTo($('.board'));
     }
   }
 }
@@ -398,7 +398,7 @@ function removeUl() {
   setTimeout(function() {
     $('ul').remove(); // remove the game board
     showAftermath(); // trigger the consequence page
-  }, 5000);
+  }, 3000);
 }
 
 function showAftermath() {
@@ -411,10 +411,10 @@ function showAftermath() {
 
 // var legalM = [];
 // function canMove(){
-//   for (var i = 0; i < array.length; i++) {
-//     for (var j = 0; j < array[i].length; j++) {
-//       if (array[i][j] !== 'w') {
-//         legalM.push(array[i][j]);
+//   for (var i = 0; i < board.length; i++) {
+//     for (var j = 0; j < board[i].length; j++) {
+//       if (board[i][j] !== 'w') {
+//         legalM.push(board[i][j]);
 //         console.log(i, j);
 //       }
 //     }

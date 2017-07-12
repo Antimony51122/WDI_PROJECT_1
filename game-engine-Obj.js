@@ -1,13 +1,17 @@
 var maze = maze || {};
 
-maze.row0 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
-maze.row1 = [ 'w', 'a', 'a', 'w', 'a', 'a', 'a', 'a', 'a', 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'w'];
-maze.row2 = [ 'w', 'a', 'b', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'g', 'w'];
-maze.row3 = [ 'w', 'a', 'a', 'a', 'a', 'a', 's', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'w'];
-maze.row4 = [ 'w', 'a', 'a', 'w', 'a', 'a', 'a', 'a', 'a', 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'w'];
-maze.row5 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
+maze.row0 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
+maze.row1 = [ 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'w'];
+maze.row2 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'b', 'b', 'a', 'a', 'w', 'w', 'w', 'a', 'w'];
+maze.row3 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+maze.row4 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+maze.row5 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 'a', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+maze.row6 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'a', 's', 'b', 'a', 'a', 'w', 'a', 'a', 'w'];
+maze.row7 = [ 'w', 'a', 'a', 'w', 'a', 'w', 'a', 'a', 'b', 'b', 'b', 'a', 'a', 'w', 'w', 'w', 'a', 'w'];
+maze.row8 = [ 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'g', 'w'];
+maze.row9 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
 
-maze.board = [maze.row0, maze.row1, maze.row2, maze.row3, maze.row4, maze.row5];
+maze.board = [maze.row0, maze.row1, maze.row2, maze.row3, maze.row4, maze.row5, maze.row6, maze.row7, maze.row8, maze.row9];
 
 maze.swordOrNot = false;
 maze.joinDarkOrNot = false;
@@ -32,11 +36,14 @@ maze.dropCharacter = function dropCharacter() {
   $('li:nth-child(19)').addClass('luke');
 };
 
-maze.currentLukeIndex = $('li').index($('li.luke'));
-maze.currentLukePosition = $($('li')[maze.currentLukeIndex]);
+maze.currLukeIndex = $('li').index($('li.luke')); // returning a number
+maze.currLukePosn = $($('li')[maze.currLukeIndex]); // returning a <li>
+maze.currLukePosnAttr = maze.currLukePosn.attr('class'); // returning a class
+console.log();
 
 maze.moveLeftNext = function moveLeftNext() {
-  this.newLiLeft = $('li')[this.currentLukeIndex - 1];
+  this.newLiLeft = $($('li')[this.currLukeIndex - 1]);
+  this.newLiLeftAttr = $($('li')[this.currLukeIndex - 1]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiLeft).addClass('luke');
@@ -57,7 +64,8 @@ maze.moveLeftNext = function moveLeftNext() {
 };
 
 maze.moveRightNext = function moveRightNext() {
-  this.newLiRight = $('li')[this.currentLukeIndex + 1];
+  this.newLiRight = $('li')[this.currLukeIndex + 1];
+  this.newLiRightAttr = $($('li')[this.currLukeIndex + 1]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiRight).addClass('luke');
@@ -78,7 +86,8 @@ maze.moveRightNext = function moveRightNext() {
 };
 
 maze.moveUpNext = function moveUpNext() {
-  this.newLiUp = $('li')[this.currentLukeIndex - this.row0.length];
+  this.newLiUp = $('li')[this.currLukeIndex - this.row0.length];
+  this.newLiUpAttr = $($('li')[this.currLukeIndex - this.row0.length]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiUp).addClass('luke');
@@ -99,7 +108,8 @@ maze.moveUpNext = function moveUpNext() {
 };
 
 maze.moveDownNext = function moveDownNext() {
-  this.newLiDown = $('li')[this.currentLukeIndex + this.row0.length];
+  this.newLiDown = $('li')[this.currLukeIndex + this.row0.length];
+  this.newLiDownAttr = $($('li')[this.currLukeIndex + this.row0.length]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiDown).addClass('luke');
@@ -120,8 +130,9 @@ maze.moveDownNext = function moveDownNext() {
 };
 
 maze.pushLeftNext = function pushLeftNext() {
-  this.newLiLeft= $('li')[this.currentLukeIndex - 1];
-  this.newLiLeftBefore = $('li')[this.currentLukeIndex - 2];
+  this.newLiLeft= $('li')[this.currLukeIndex - 1];
+  this.newLiLeftBefore = $('li')[this.currLukeIndex - 2];
+  this.newLiLeftBeforeAttr = $($('li')[this.currLukeIndex - 2]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiLeft).addClass('luke');
@@ -146,8 +157,9 @@ maze.pushLeftNext = function pushLeftNext() {
 };
 
 maze.pushRightNext = function pushRightNext() {
-  this.newLiRight = $('li')[this.currentLukeIndex + 1];
-  this.newLiRightAfter = $('li')[this.currentLukeIndex + 2];
+  this.newLiRight = $('li')[this.currLukeIndex + 1];
+  this.newLiRightAfter = $('li')[this.currLukeIndex + 2];
+  this.newLiRightAfterAttr = $($('li')[this.currLukeIndex + 2]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiRight).addClass('luke');
@@ -172,8 +184,9 @@ maze.pushRightNext = function pushRightNext() {
 };
 
 maze.pushUpNext = function pushUpNext() {
-  this.newLiUp = $('li')[this.currentLukeIndex - this.row0.length];
-  this.newLiUpAbove = $('li')[this.currentLukeIndex - (this.row0.length * 2)];
+  this.newLiUp = $('li')[this.currLukeIndex - this.row0.length];
+  this.newLiUpAbove = $('li')[this.currLukeIndex - (this.row0.length * 2)];
+  this.newLiUpAboveAttr = $($('li')[this.currLukeIndex - (this.row0.length * 2)]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiUp).addClass('luke');
@@ -198,8 +211,9 @@ maze.pushUpNext = function pushUpNext() {
 };
 
 maze.pushDownNext = function pushDownNext() {
-  this.newLiDown = $('li')[this.currentLukeIndex + this.row0.length];
-  this.newLiDownBelow = $('li')[this.currentLukeIndex + (this.row0.length * 2)];
+  this.newLiDown = $('li')[this.currLukeIndex + this.row0.length];
+  this.newLiDownBelow = $('li')[this.currLukeIndex + (this.row0.length * 2)];
+  this.newLiDownBelowAttr = $($('li')[this.currLukeIndex + (this.row0.length * 2)]).attr('class');
   if (this.swordOrNot === false) {
     $('li.luke').removeClass('luke');
     $(this.newLiDown).addClass('luke');
@@ -224,15 +238,18 @@ maze.pushDownNext = function pushDownNext() {
 };
 
 maze.pickSword = function pickSword() {
-  if ((this.currentLukePosition.attr('class') === 's luke lukeLeft')
-  || (this.currentLukePosition.attr('class') === 's luke lukeRight')
-  || (this.currentLukePosition.attr('class') === 's luke lukeUp')
-  || (this.currentLukePosition.attr('class') === 's luke lukeDown')) {
+  if ((this.currLukePosn.attr('class') === 's luke lukeLeft')
+  || (this.currLukePosn.attr('class') === 's luke lukeRight')
+  || (this.currLukePosn.attr('class') === 's luke lukeUp')
+  || (this.currLukePosn.attr('class') === 's luke lukeDown')) {
 
     $('li.s').addClass('a');
     $('li.s').removeClass('s');
     this.swordOrNot = true;
     // here play mario win music
+    this.audioMarioWin = document.getElementById('audioM');
+    this.audioMarioWin.src = 'audio/superMarioWin.mp3';
+    this.audioMarioWin.play();
   }
   console.log(this.swordOrNot);
   return this.swordOrNot;
@@ -259,12 +276,13 @@ console.log(maze.keyMatch['up']);
 
 $(document).keydown(function(e) {
   switch(e.which) {
-    case this.keyMatch['up']:
+    case (this.keyMatch['up']):
       if ((this.newLiUp.attr('class') !== 'w')
       && (this.newLiUp.attr('class') !== 'b')) {
         this.moveUpNext();
         this.pickSword();
       } else if ((this.newLiUp.attr('class') !== 'w')
+      // put attribute class into this.smth as well
       && (this.newLiUp.attr('class') === 'b')
       && (this.newLiUpAbove.attr('class') !== 'w')
       && (this.newLiUpAbove.attr('class') !== 'b')
@@ -274,7 +292,7 @@ $(document).keydown(function(e) {
         this.pickSword();
       }
       break;
-    case this.keyMatch['down']:
+    case (this.keyMatch['down']):
       if ((this.newLiDown.attr('class') !== 'w')
       && (this.newLiDown.attr('class') !== 'b')) {
         this.moveDownNext();
@@ -331,10 +349,10 @@ $(document).keydown(function(e) {
 
 maze.joinDarkCondition = function joinDarkCondition() {
   if ((this.swordOrNot === true) &&
-  ((this.currentLukePosition.attr('class') === 'g luke lukeLeftSword')
-  || (this.currentLukePosition.attr('class') === 'g luke lukeRightSword')
-  || (this.currentLukePosition.attr('class') === 'g luke lukeUpSword')
-  || (this.currentLukePosition.attr('class') === 'g luke lukeDownSword')) ) {
+  ((this.currLukePosn.attr('class') === 'g luke lukeLeftSword')
+  || (this.currLukePosn.attr('class') === 'g luke lukeRightSword')
+  || (this.currLukePosn.attr('class') === 'g luke lukeUpSword')
+  || (this.currLukePosn.attr('class') === 'g luke lukeDownSword')) ) {
     this.joinDarkOrNot = true;
   }
   if (this.joinDarkOrNot === true) {
