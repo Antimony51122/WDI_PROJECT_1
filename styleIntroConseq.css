@@ -1,244 +1,258 @@
 html, body {
-  height: 100%;
-  min-height: 100%;
-  margin: 0;
-  padding: 0;
-  background: black;
+    height: 100%;
+    min-height: 100%;
+    margin: 0;
+    padding: 0;
+    background: black;
 }
 
 body {
-  text-align: center;
-  /*background: url("http://5dwallpaper.com/wp-content/uploads/2016/07/darth-vader-wallpaper9.jpg") no-repeat center;*/
-  background: black;
-  background-size: cover;
-  color: white;
-  font-family: serif;
+    text-align: center;
+    /*background: url("http://5dwallpaper.com/wp-content/uploads/2016/07/darth-vader-wallpaper9.jpg") no-repeat center;*/
+    background: black;
+    background-size: cover;
+    color: white;
+    font-family: serif;
 
-  align-items: center;
-  justify-content: center;
+    align-items: center;
+    justify-content: center;
 }
 
 p {
-  font-size: 70px;
-  font-family: "Amatic SC";
-  border: 2px solid #FFF;
-  border-top: 5px solid #FFF;
-  border-bottom: 5px solid #FFF;
-  /*display: inline-block;*/
-  padding: 30 0;
-  line-height: 0.9;
-  opacity: 0.8;
-  margin: 20px 0 0 0;
-  display: none;
+    font-size: 70px;
+    font-family: "Amatic SC";
+    border: 2px solid #FFF;
+    border-top: 5px solid #FFF;
+    border-bottom: 5px solid #FFF;
+    /*display: inline-block;*/
+    padding: 30px 0;
+    line-height: 0.9;
+    opacity: 0.8;
+    margin: 20px 0 0 0;
+    display: none;
 }
 
 .words {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .i-am {
-  margin: 100px 0 0 0;
-  font-size: 90px;
-  line-height: 60px;
-  display: none;
+    margin: 100px 0 0 0;
+    font-size: 90px;
+    line-height: 60px;
+    display: none;
 }
 
 .your {
-  font-size: 70px;
-  margin: 0;
-  line-height: 50px;
-  color: red;
-  display: none;
+    font-size: 70px;
+    margin: 0;
+    line-height: 50px;
+    color: red;
+    display: none;
 }
 
 .father {
-  margin: 0 0 100px 0;
-  font-size: 52px;
-  line-height: 36px;
-  display: none;
+    margin: 0 0 100px 0;
+    font-size: 52px;
+    line-height: 36px;
+    display: none;
 }
 
 input {
-  border: 0;
-  padding: 10px;
-  font-size: 18px;
-  display: none;
+    border: 0;
+    padding: 10px;
+    font-size: 18px;
+    display: none;
 }
 
 input[type="enter"] {
-  margin: auto;
-  background: red;
-  color: white;
-  text-align: center;
-  /*border: 2px solid red;*/
+    margin: auto;
+    background: red;
+    color: white;
+    text-align: center;
+    /*border: 2px solid red;*/
 }
 
 input[type="enter"]:hover {
-  margin: auto;
-  background: red;
-  color: white;
-  text-align: center;
-  /*border: 2px solid red;*/
+    margin: auto;
+    background: red;
+    color: white;
+    text-align: center;
+    /*border: 2px solid red;*/
 
-  /*change opacity when cursor on top of the input*/
-  opacity: 0.5;
+    /*change opacity when cursor on top of the input*/
+    opacity: 0.5;
 }
 
 .darthV {
-  position: absolute;
-  top: 0;
-  left: 1600px;
-  /*background: url("http://i.imgur.com/xUWrqKg.png");*/
-  max-height: 100%;
-  display: none;
+    position: absolute;
+    top: 0;
+    /*left: 1600px;*/
+    right: -600px;
+    /*background: url("http://i.imgur.com/xUWrqKg.png");*/
+    max-height: 100%;
+    display: none;
 }
 
 
 /*pre-intro music control page*/
 #ready {
-  margin-top: 50px;
-  font-family: "Amatic SC";
-  color: #aaa;
-  font-size: 2.5em;
-  line-height: 0.9;
+    margin-top: 50px;
+    font-family: "Amatic SC";
+    color: #aaa;
+    font-size: 2.5em;
+    line-height: 0.9;
 }
 
 #dark {
-  font-family: "Amatic SC";
-  color: #aaa;
-  font-size: 5.2em;
-  line-height: 0.9;
+    font-family: "Amatic SC";
+    color: #aaa;
+    font-size: 5.2em;
+    line-height: 0.9;
 }
 
 #play {
-  color: #aaa;
-  font-size: 20em;
+    color: #aaa;
+    font-size: 20em;
 }
 
 #play:hover {
-  color: #09F224;
-  font-size: 20em;
+    color: #09F224;
+    font-size: 20em;
 }
 
 /*same aftermath different callings in aftermath part*/
 #aftermathM, #aftermathJ{
-  font-family: "Amatic SC";
-  color: #aaa;
-  font-size: 17em;
-  display: none;
+    font-family: "Amatic SC";
+    color: #aaa;
+    font-size: 17em;
+    display: none;
 }
 
 #aftermathM:hover {
-  color: red;
+    color: red;
 }
 
 #aftermathJ:hover {
-  color: red;
+    color: red;
 }
 
 /*same luke different callings in aftermath part*/
 .lukeM .lukeJ{
-  font-size: 70px;
-  font-family: "Amatic SC";
-  border: 2px solid #FFF;
-  border-top: 5px solid #FFF;
-  border-bottom: 5px solid #FFF;
-  /*display: inline-block;*/
-  padding: 30 0;
-  line-height: 0.9;
-  opacity: 0.8;
-  margin: 20px 0 0 0;
-  display: none;
+    font-size: 70px;
+    font-family: "Amatic SC";
+    border: 2px solid #FFF;
+    border-top: 5px solid #FFF;
+    border-bottom: 5px solid #FFF;
+    /*display: inline-block;*/
+    padding: 10px 0;
+    line-height: 0.9;
+    opacity: 0.8;
+    margin: 20px 0 0 0;
+    display: none;
+}
+
+p {
+    padding: 0;
+}
+
+p.lukeM {
+    padding: 0;
+}
+
+p.lukeJ {
+    padding: 0;
 }
 
 /*consequence murder page*/
 #you-murder {
-  font-family: "Amatic SC";
-  margin: 20px 0 0 0;
-  font-size: 47px;
-  line-height: 40px;
-  display: none;
+    font-family: "Amatic SC";
+    margin: 20px 0 0 0;
+    font-size: 47px;
+    line-height: 40px;
+    display: none;
 }
 
 #your-father {
-  font-family: "Amatic SC";
-  margin: 0;
-  font-size: 57px;
-  line-height: 57px;
-  color: red;
-  display: none;
+    font-family: "Amatic SC";
+    margin: 0;
+    font-size: 57px;
+    line-height: 57px;
+    color: red;
+    display: none;
 }
 
 input[type="enterOver"] {
-  margin: auto;
-  background: red;
-  color: white;
-  text-align: center;
-  /*border: 2px solid red;*/
-  padding: 5px;
+    margin: auto;
+    background: red;
+    color: white;
+    text-align: center;
+    /*border: 2px solid red;*/
+    padding: 5px;
 }
 
 input[type="enterOver"]:hover {
-  margin: auto;
-  background: red;
-  color: white;
-  text-align: center;
-  /*border: 2px solid red;*/
+    margin: auto;
+    background: red;
+    color: white;
+    text-align: center;
+    /*border: 2px solid red;*/
 
-  /*change opacity when cursor on top of the input*/
-  opacity: 0.5;
-  padding: 5px;
+    /*change opacity when cursor on top of the input*/
+    opacity: 0.5;
+    padding: 5px;
 }
 
 .darthVDeath {
-  display: none;
+    display: none;
 }
 
 /*consequence join page*/
 #your-father1 {
-  font-family: "Amatic SC";
-  margin: 20px 0 0 0;
-  font-size: 55px;
-  line-height: 55px;
-  color: red;
-  display: none;
+    font-family: "Amatic SC";
+    margin: 20px 0 0 0;
+    font-size: 55px;
+    line-height: 55px;
+    color: red;
+    display: none;
 }
 
 #is-actually {
-  font-family: "Amatic SC";
-  margin: 0;
-  font-size: 60px;
-  line-height: 60px;
-  margin-bottom: 5px;
-  display: none;
+    font-family: "Amatic SC";
+    margin: 0;
+    font-size: 60px;
+    line-height: 60px;
+    margin-bottom: 5px;
+    display: none;
 }
 
 .darthTrump {
-  position: absolute;
-  left: 950px;
-  top: 130px;
-  display: none;
+    position: absolute;
+    right: 50px;
+    bottom: 50px;
+    display: none;
 }
 
 .taxiVador {
-  display: none;
+    z-index: 3;
+    display: none;
 }
 
 .surprise {
-  margin: auto;
-  background: red;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  display: none;
+    margin: auto;
+    background: red;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    display: none;
 }
 
 .surprise:hover {
-  margin: auto;
-  background: red;
-  color: white;
-  text-align: center;
-  padding: 5px;
-  opacity: 0.5;
-  display: none;
+    margin: auto;
+    background: red;
+    color: white;
+    text-align: center;
+    padding: 5px;
+    opacity: 0.5;
+    display: none;
 }

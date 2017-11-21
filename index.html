@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <title>Darth Vador Maze Game</title>
 
@@ -13,12 +13,19 @@
     <link rel="stylesheet" href="styleGame.css">
 
     <!-- jQuery lib reference -->
+    <!--<script-->
+        <!--src="https://code.jquery.com/jquery-3.2.1.min.js"-->
+        <!--integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="-->
+        <!--crossorigin="anonymous"-->
+    <!--&gt;-->
+    <!--</script>-->
     <script
-    src="https://code.jquery.com/jquery-3.2.1.min.js"
-    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-    crossorigin="anonymous"></script>
-  </head>
-  <body>
+        src="jquery-3.2.1.min.js"
+    >
+    </script>
+
+</head>
+<body>
     <!-- pre-intro music controlling part -->
     <audio id="audio"></audio>
 
@@ -28,7 +35,7 @@
 
     <!-- main intro page to enter the game -->
     <p id="luke1stTime">
-      L<font color="red">u</font>ke<font color="red">,</font>
+        L<font color="red">u</font>ke<font color="red">,</font>
     </p>
     <div class="words i-am">I am</div>
     <div class="words your">your</div>
@@ -51,7 +58,7 @@
 
     <!-- consequence Murder page -->
     <p class="lukeM">
-      L<font color="red">u</font>ke<font color="red">,</font>
+        L<font color="red">u</font>ke<font color="red">,</font>
     </p>
     <div id="you-murder">you murdered</div>
     <div id="your-father">your father</div>
@@ -62,7 +69,7 @@
 
     <!-- consequence Join page -->
     <p class="lukeJ">
-      L<font color="red">u</font>ke<font color="red">,</font>
+        L<font color="red">u</font>ke<font color="red">,</font>
     </p>
     <div id="your-father1">your father</div>
     <div id="is-actually">is actually</div>
@@ -78,5 +85,5 @@
 
     <!-- JS file for the consequence part -->
     <script type="text/javascript" src="Conseq.js"></script>
-  </body>
+</body>
 </html>
