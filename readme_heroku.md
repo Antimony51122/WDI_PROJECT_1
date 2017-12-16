@@ -222,7 +222,7 @@ Heroku is primarily aimed at apps running on frameworks, like Ruby on Rails, Dja
 
 For static [`ruby`](https://devcenter.heroku.com/articles/static-sites-ruby) sites on Heroku you still need to do a little bit of configuration.
 
-Howver, heroku allows you to publish PHP sites as well, with NO configuration needed! That’s right, just create your .php files, and it will figure out that the Heroku app should run PHP for this site, and it will auto-configure the app to run on the latest version of PHP/Apache.
+However, heroku allows you to publish PHP sites as well, with NO configuration needed! That’s right, just create your .php files, and it will figure out that the Heroku app should run PHP for this site, and it will auto-configure the app to run on the latest version of PHP/Apache.
 
 ### So here is how you do it:
 
