@@ -30,11 +30,6 @@ function inputConseqOverIn() {
     }, 1000);
 }
 
-// click '.surprise' and refresh the page, go back the beginning
-$('.game-over').click(function() {
-    window.location.reload()
-});
-
 function playTragicMusic() {
     const audioZigen = document.getElementById('audio2');
     audioZigen.src = 'audio/ZigeunerweisenShort.mp3';
@@ -49,7 +44,6 @@ function playTragicMusic() {
     }, 3500);
 }
 
-// '.aftermathM': 'M' here means 'murder' while in below, '.aftermathJ': 'J' means 'join'
 $('#aftermathM').click(function() {
     $('#aftermathM').remove();
     pLukeMIn();
@@ -95,11 +89,6 @@ function surpriseIn() {
         $('.surprise').fadeIn(1500, 'swing', surpriseIn());
     },1000);
 }
-
-// click '.surprise' and refresh the page, go back the beginning
-$('.surprise').click(function() {
-    window.location.reload()
-});
 
 function playMarioDieMusic() {
     const audioMarioDie = document.getElementById('audio3');

@@ -1,3 +1,4 @@
+// Build up game maze, w for wall, a for available, g for goal
 var row0 = [ 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w', 'w'];
 var row1 = [ 'w', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'a', 'w'];
 var row2 = [ 'w', 'a', 'w', 'a', 'w', 'a', 'w', 'a', 'b', 'b', 'b', 'a', 'a', 'w', 'w', 'w', 'a', 'w'];
@@ -44,10 +45,17 @@ function currentLukeIndex() {
     return currentLiIndex;
 }
 
+// const originLiClass = $($('li')[currentLukeIndex()]).attr('class');
+
 // series plausible actions that Luke could take
 function moveLeftNext() {
     // const li = $('li');
     const newLiLeft = $('li')[currentLukeIndex() - 1];
+    const newLiLeftClass = $($('li')[currentLukeIndex() - 1]).attr('class');
+    const originLiClass = $($('li')[currentLukeIndex()]).attr('class');
+
+    console.log(originLiClass);
+    console.log(newLiLeftClass);
     if (swordOrNot === false) {
         // use .luke as position reference and add real actions by overlapping onto top
         $('li.luke').removeClass('luke');
@@ -280,18 +288,19 @@ function pickSword() {
     return swordOrNot;
 }
 
-function murderDarthVador() {
+function murderAttempt() {
     // const newLiRight = $('li')[currentLukeIndex() + 1];
     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
 
     $('li.luke').addClass('lukeKill');
     // $('li.luke').removeClass('luke');
-
-    murderFatherOrNot = true;
+    if ($($('li')[currentLukeIndex() + 1]).attr('class') === 'g') {
+        murderFatherOrNot = true;
+    }
 }
 
-$(document).keydown(function(e){
+$(document).keydown(function(e){ // 'e' for event
     if((e.which === 38) // up arrow
         // the block next in the moving direction is nether wall nor box
         && ($($('li')[currentLukeIndex() - row0.length]).attr('class') !== 'w')
@@ -352,9 +361,8 @@ $(document).keydown(function(e){
         pushRightNext();
         pickSword();
     } else if ((e.which === 69) // e key: execute
-        && (swordOrNot === true)
-        && ($($('li')[currentLukeIndex() + 1]).attr('class') === 'g')) {
-        murderDarthVador();
+        && (swordOrNot === true)) {
+        murderAttempt();
     }
     console.log($($('li')[currentLukeIndex()]).attr('class'));
     console.log(joinDarkCondition());
@@ -370,27 +378,19 @@ function joinDarkCondition() {
             || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeDownSword')) ) {
         joinDarkOrNot = true;
     }
-    // while (joinDarkOrNot) {
-    //   alert('you have joined the DARK SIDE!');
-    //   joinDarkOrNot = false;
-    // }
     if (joinDarkOrNot === true) {
         setTimeout(function() {
-            $('ul').fadeOut(5000, 'swing', removeUl());
+            $('ul').fadeOut(2000, 'swing', removeUl());
         }, 1000);
     }
     return joinDarkOrNot;
 }
 
 function murderFatherCondition() {
-    // while (murderFatherOrNot) {
-    //   alert('you murder your FATHER!');
-    //   murderFatherOrNot = false;
-    // }
     if (murderFatherOrNot === true) {
         setTimeout(function() {
-            $('ul').fadeOut(5000, 'swing', removeUl());
-        }, 4000);
+            $('ul').fadeOut(2000, 'swing', removeUl());
+        }, 3000);
     }
     return murderFatherOrNot;
 }
@@ -404,9 +404,9 @@ function removeUl() {
 
 function showAftermath() {
     if (murderFatherOrNot === true) {
-        $('#aftermathM').fadeIn('slow', 'swing');
+        $('#aftermathM').fadeIn(2000, 'swing');
     } else if (joinDarkOrNot === true) {
-        $('#aftermathJ').fadeIn('slow', 'swing');
+        $('#aftermathJ').fadeIn(2000, 'swing');
     }
 }
 
