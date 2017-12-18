@@ -45,48 +45,79 @@ function currentLukeIndex() {
     return currentLiIndex;
 }
 
-// const originLiClass = $($('li')[currentLukeIndex()]).attr('class');
+// 
+
 
 // series plausible actions that Luke could take
 function moveLeftNext() {
     // const li = $('li');
     const newLiLeft = $('li')[currentLukeIndex() - 1];
     const newLiLeftClass = $($('li')[currentLukeIndex() - 1]).attr('class');
-    const originLiClass = $($('li')[currentLukeIndex()]).attr('class');
+    const originalLiClass = $($('li')[currentLukeIndex()]).attr('class');
 
     console.log(newLiLeftClass);
-    console.log(originLiClass);
+    console.log(originalLiClass);
 
-    if (swordOrNot === false) {
-        // use .luke as position reference and add real actions by overlapping onto top
-        $('li.luke').removeClass('luke');
-        $(newLiLeft).addClass('luke');
+    // extract the real action without removing 'a' & 'luke'
+    var txtArr = originalLiClass.split(' ');
+    console.log(txtArr);
 
-        // remove other residual effects from all previous possible actions
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
+    var txtLength = txtArr.length;
+    var extractTxt = [];
 
-        // adding real direction actions before sword by overlapping onto top of .luke
-        $(newLiLeft).addClass('lukeLeft');
+    for (var i = 0; i < txtLength; i++) {
+        console.log(txtArr[i]);
+        txtArr[i].split('');
+        var itemLength = txtArr[i].length;
+        console.log(itemLength);
+        if (itemLength > 4) {
+            extractTxt.push(txtArr[i])
+        }
 
-    } else {
-        // use .luke as position reference and add real actions by overlapping onto top
-        $('li.luke').removeClass('luke');
-        $(newLiLeft).addClass('luke');
+    }
+    console.log(extractTxt);
 
-        // remove other residual effects from all previous possible actions without Sword
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
+    // if (swordOrNot === false) {
+    //     // use .luke as position reference and add real actions by overlapping onto top
+    //     $('li.luke').removeClass('luke');
+    //     $(newLiLeft).addClass('luke');
+    //
+    //     // remove other residual effects from all previous possible actions
+    //     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
+    //
+    //     // adding real direction actions before sword by overlapping onto top of .luke
+    //     $(newLiLeft).addClass('lukeLeft');
+    //
+    // } else {
+    //     // use .luke as position reference and add real actions by overlapping onto top
+    //     $('li.luke').removeClass('luke');
+    //     $(newLiLeft).addClass('luke');
+    //
+    //     // remove other residual effects from all previous possible actions at the instance from without Sword to with Sword
+    //     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
+    //
+    //     // remove other residual effects from all previous possible actions with Sword
+    //     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
+    //
+    //     // remove luke killing action
+    //     $('li').removeClass('lukeKill');
+    //
+    //     // adding real direction actions after sword by overlapping onto top of .luke
+    //     $(newLiLeft).addClass('lukeLeftSword');
+    // }
 
-        // remove other residual effects from all previous possible actions with Sword
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
+    $('li.luke').removeClass('luke');
+    $(newLiLeft).addClass('luke');
 
-        // remove luke killing action
-        $('li').removeClass('lukeKill');
-
-        // adding real direction actions after sword by overlapping onto top of .luke
-        $(newLiLeft).addClass('lukeLeftSword');
+    for (var i = 0; i < extractTxt.length; i++) {
+        $('li').removeClass(extractTxt[i]);
     }
 
-    
+    if (swordOrNot === false) {
+        $(newLiLeft).addClass('lukeLeft');
+    } else {
+        $(newLiLeft).addClass('lukeLeftSword');
+    }
 }
 
 function moveRightNext() {
@@ -288,7 +319,7 @@ function pickSword() {
         audioMarioWin.src = 'audio/superMarioWin.mp3';
         audioMarioWin.play();
     }
-    console.log(swordOrNot);
+    // console.log(swordOrNot);
     return swordOrNot;
 }
 
@@ -368,9 +399,9 @@ $(document).keydown(function(e){ // 'e' for event
         && (swordOrNot === true)) {
         murderAttempt();
     }
-    console.log($($('li')[currentLukeIndex()]).attr('class'));
-    console.log(joinDarkCondition());
-    console.log(murderFatherCondition());
+    // console.log($($('li')[currentLukeIndex()]).attr('class'));
+    // console.log(joinDarkCondition());
+    // console.log(murderFatherCondition());
 });
 
 
