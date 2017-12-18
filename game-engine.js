@@ -17,7 +17,6 @@ var joinDarkOrNot = false;
 var murderFatherOrNot = false;
 
 // waiting for the dom to be loaded then running the init function
-
 window.addEventListener('DOMContentLoaded', $(init));
 
 function init() {
@@ -68,12 +67,12 @@ function extractOriginalLiClass() {
         if (itemLength > 4) {
             extractTxt.push(txtArr[i])
         }
-
     }
     console.log(extractTxt);
     return extractTxt
 }
 
+// removing the original li element's class
 function removePreviousClass() {
     var originalLiClass = extractOriginalLiClass();
 
@@ -186,24 +185,18 @@ function pushLeftNext() {
 function pushRightNext() {
     const newLiRight = $('li')[currentLukeIndex() + 1];
     const newLiRightAfter = $('li')[currentLukeIndex() + 2];
+
+    removePreviousClass();
+
+    $('li.luke').removeClass('luke');
+    $(newLiRight).addClass('luke');
+
     if (swordOrNot === false) {
-        $('li.luke').removeClass('luke');
-        $(newLiRight).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
         $(newLiRight).addClass('lukeRight');
-
         $(newLiRight).addClass('a').removeClass('b');
         $(newLiRightAfter).addClass('b').removeClass('a');
     } else {
-        $('li.luke').removeClass('luke');
-        $(newLiRight).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-        $('li').removeClass('lukeKill');
         $(newLiRight).addClass('lukeRightSword');
-
         $(newLiRight).addClass('a').removeClass('b');
         $(newLiRightAfter).addClass('b').removeClass('a');
     }
@@ -212,24 +205,18 @@ function pushRightNext() {
 function pushUpNext() {
     const newLiUp = $('li')[currentLukeIndex() - row0.length];
     const newLiUpAbove = $('li')[currentLukeIndex() - (row0.length * 2)];
+
+    removePreviousClass();
+
+    $('li.luke').removeClass('luke');
+    $(newLiUp).addClass('luke');
+
     if (swordOrNot === false) {
-        $('li.luke').removeClass('luke');
-        $(newLiUp).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
         $(newLiUp).addClass('lukeUp');
-
         $(newLiUp).addClass('a').removeClass('b');
         $(newLiUpAbove).addClass('b').removeClass('a');
     } else {
-        $('li.luke').removeClass('luke');
-        $(newLiUp).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-        $('li').removeClass('lukeKill');
         $(newLiUp).addClass('lukeUpSword');
-
         $(newLiUp).addClass('a').removeClass('b');
         $(newLiUpAbove).addClass('b').removeClass('a');
     }
@@ -238,24 +225,18 @@ function pushUpNext() {
 function pushDownNext() {
     const newLiDown = $('li')[currentLukeIndex() + row0.length];
     const newLiDownBelow = $('li')[currentLukeIndex() + (row0.length * 2)];
+
+    removePreviousClass();
+
+    $('li.luke').removeClass('luke');
+    $(newLiDown).addClass('luke');
+
     if (swordOrNot === false) {
-        $('li.luke').removeClass('luke');
-        $(newLiDown).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
         $(newLiDown).addClass('lukeDown');
-
         $(newLiDown).addClass('a').removeClass('b');
         $(newLiDownBelow).addClass('b').removeClass('a');
     } else {
-        $('li.luke').removeClass('luke');
-        $(newLiDown).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-        $('li').removeClass('lukeKill');
         $(newLiDown).addClass('lukeDownSword');
-
         $(newLiDown).addClass('a').removeClass('b');
         $(newLiDownBelow).addClass('b').removeClass('a');
     }
@@ -266,11 +247,11 @@ function pickSword() {
         || ($($('li')[currentLukeIndex()]).attr('class') === 's luke lukeRight')
         || ($($('li')[currentLukeIndex()]).attr('class') === 's luke lukeUp')
         || ($($('li')[currentLukeIndex()]).attr('class') === 's luke lukeDown')) {
-        // $('li.s').addClass('taken')
+        // remove class of sword, add class of available space, indicating sword taken
         $('li.s').addClass('a');
         $('li.s').removeClass('s');
         swordOrNot = true;
-        // here play mario win music
+        // start playing mario win music at the instance when sword taken
         const audioMarioWin = document.getElementById('audioM');
         audioMarioWin.src = 'audio/superMarioWin.mp3';
         audioMarioWin.play();
