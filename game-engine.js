@@ -54,8 +54,9 @@ function moveLeftNext() {
     const newLiLeftClass = $($('li')[currentLukeIndex() - 1]).attr('class');
     const originLiClass = $($('li')[currentLukeIndex()]).attr('class');
 
-    console.log(originLiClass);
     console.log(newLiLeftClass);
+    console.log(originLiClass);
+
     if (swordOrNot === false) {
         // use .luke as position reference and add real actions by overlapping onto top
         $('li.luke').removeClass('luke');
@@ -66,6 +67,7 @@ function moveLeftNext() {
 
         // adding real direction actions before sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeft');
+
     } else {
         // use .luke as position reference and add real actions by overlapping onto top
         $('li.luke').removeClass('luke');
@@ -83,6 +85,8 @@ function moveLeftNext() {
         // adding real direction actions after sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeftSword');
     }
+
+    
 }
 
 function moveRightNext() {
