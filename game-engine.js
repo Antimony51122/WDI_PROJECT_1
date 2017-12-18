@@ -17,7 +17,7 @@ var joinDarkOrNot = false;
 var murderFatherOrNot = false;
 
 // waiting for the dom to be loaded then running the init function
-// $(init);
+
 window.addEventListener('DOMContentLoaded', $(init));
 
 function init() {
@@ -49,7 +49,7 @@ function currentLukeIndex() {
 function extractOriginalLiClass() {
     const originalLiClass = $($('li')[currentLukeIndex()]).attr('class');
 
-    // extract the real action without removing 'a' & 'luke'
+    // extract the real action without removing position references: 'a' & 'luke'
     var txtArr = originalLiClass.split(' ');
     console.log(txtArr);
 
@@ -58,9 +58,13 @@ function extractOriginalLiClass() {
 
     for (var i = 0; i < txtLength; i++) {
         console.log(txtArr[i]);
+
+        // append all strings that are longer than both 'a' & 'luke',
+        // which is the original move we tend to eliminate into extractTxt
         txtArr[i].split('');
         var itemLength = txtArr[i].length;
         console.log(itemLength);
+
         if (itemLength > 4) {
             extractTxt.push(txtArr[i])
         }
@@ -70,26 +74,30 @@ function extractOriginalLiClass() {
     return extractTxt
 }
 
+function removePreviousClass() {
+    var originalLiClass = extractOriginalLiClass();
+
+    // remove other residual effects from all previous possible actions without removing references 'a luke'
+    for (var i = 0; i < originalLiClass.length; i++) {
+        $('li').removeClass(originalLiClass[i]);
+    }
+}
+
 // series plausible actions that Luke could take
 function moveLeftNext() {
     const newLiLeft = $('li')[currentLukeIndex() - 1];
-    // const newLiLeftClass = $($('li')[currentLukeIndex() - 1]).attr('class');
-    // const originalLiClass = $($('li')[currentLukeIndex()]).attr('class');
-    //
-    // console.log(newLiLeftClass);
-    // console.log(originalLiClass);
 
-    var extractOriginalClass = extractOriginalLiClass();
+    // indicates whether the next move to the left is feasible or not
+    const newLiLeftClass = $($('li')[currentLukeIndex() - 1]).attr('class');
+    console.log(newLiLeftClass);
+
+    removePreviousClass();
 
     // use .luke as position reference and add real actions by overlapping onto top
     $('li.luke').removeClass('luke');
     $(newLiLeft).addClass('luke');
 
-    // remove other residual effects from all previous possible actions
-    for (var i = 0; i < extractOriginalClass.length; i++) {
-        $('li').removeClass(extractOriginalClass[i]);
-    }
-
+    // adding the class we tend to add into the next left li element
     if (swordOrNot === false) {
         // adding real direction actions before sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeft');
@@ -101,63 +109,45 @@ function moveLeftNext() {
 
 function moveRightNext() {
     const newLiRight = $('li')[currentLukeIndex() + 1];
+
+    removePreviousClass();
+
+    $('li.luke').removeClass('luke');
+    $(newLiRight).addClass('luke');
+
     if (swordOrNot === false) {
-        $('li.luke').removeClass('luke');
-        $(newLiRight).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
         $(newLiRight).addClass('lukeRight');
     } else {
-        $('li.luke').removeClass('luke');
-        $(newLiRight).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-        $('li').removeClass('lukeKill');
-
         $(newLiRight).addClass('lukeRightSword');
     }
 }
 
 function moveUpNext() {
     const newLiUp= $('li')[currentLukeIndex() - row0.length];
+
+    removePreviousClass();
+
+    $('li.luke').removeClass('luke');
+    $(newLiUp).addClass('luke');
+
     if (swordOrNot === false) {
-        $('li.luke').removeClass('luke');
-        $(newLiUp).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
         $(newLiUp).addClass('lukeUp');
     } else {
-        $('li.luke').removeClass('luke');
-        $(newLiUp).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-        $('li').removeClass('lukeKill');
-
         $(newLiUp).addClass('lukeUpSword');
     }
 }
 
 function moveDownNext() {
     const newLiDown = $('li')[currentLukeIndex() + row0.length];
+
+    removePreviousClass();
+
+    $('li.luke').removeClass('luke');
+    $(newLiDown).addClass('luke');
+
     if (swordOrNot === false) {
-        $('li.luke').removeClass('luke');
-        $(newLiDown).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
         $(newLiDown).addClass('lukeDown');
     } else {
-        $('li.luke').removeClass('luke');
-        $(newLiDown).addClass('luke');
-
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-        $('li').removeClass('lukeKill');
-
         $(newLiDown).addClass('lukeDownSword');
     }
 }
@@ -165,14 +155,14 @@ function moveDownNext() {
 function pushLeftNext() {
     const newLiLeft= $('li')[currentLukeIndex() - 1];
     const newLiLeftBefore = $('li')[currentLukeIndex() - 2];
+
+    removePreviousClass();
+
+    // use .luke as position reference and add real actions by overlapping onto top
+    $('li.luke').removeClass('luke');
+    $(newLiLeft).addClass('luke');
+
     if (swordOrNot === false) {
-        // use .luke as position reference and add real actions by overlapping onto top
-        $('li.luke').removeClass('luke');
-        $(newLiLeft).addClass('luke');
-
-        // remove other residual effects from all previous possible actions
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
         // adding real direction actions before sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeft');
 
@@ -182,19 +172,6 @@ function pushLeftNext() {
         // adding box & removing available floor on left next after corresponding position
         $(newLiLeftBefore).addClass('b').removeClass('a');
     } else {
-        // use .luke as position reference and add real actions by overlapping onto top
-        $('li.luke').removeClass('luke');
-        $(newLiLeft).addClass('luke');
-
-        // remove other residual effects from all previous possible actions without Sword
-        $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-
-        // remove other residual effects from all previous possible actions with Sword
-        $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-
-        // remove luke killing action
-        $('li').removeClass('lukeKill');
-
         // adding real direction actions after sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeftSword');
 
