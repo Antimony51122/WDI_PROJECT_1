@@ -25,7 +25,7 @@ function init() {
 }
 
 function createBoard() {
-    // for every item inside the board, i want to create an li and append it to the ul inside the html
+    // for every item inside the board, create an <li> and append it to the ul inside the html
     for (var i = 0; i < board.length; i++) {
         for (var j = 0; j < board[i].length; j++) {
             $(`<li class="${board[i][j]}"></li>`).appendTo($('.board'));
