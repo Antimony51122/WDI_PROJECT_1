@@ -45,18 +45,9 @@ function currentLukeIndex() {
     return currentLiIndex;
 }
 
-// 
-
-
-// series plausible actions that Luke could take
-function moveLeftNext() {
-    // const li = $('li');
-    const newLiLeft = $('li')[currentLukeIndex() - 1];
-    const newLiLeftClass = $($('li')[currentLukeIndex() - 1]).attr('class');
+// defining function extracting the original li element's class
+function extractOriginalLiClass() {
     const originalLiClass = $($('li')[currentLukeIndex()]).attr('class');
-
-    console.log(newLiLeftClass);
-    console.log(originalLiClass);
 
     // extract the real action without removing 'a' & 'luke'
     var txtArr = originalLiClass.split(' ');
@@ -76,46 +67,34 @@ function moveLeftNext() {
 
     }
     console.log(extractTxt);
+    return extractTxt
+}
 
-    // if (swordOrNot === false) {
-    //     // use .luke as position reference and add real actions by overlapping onto top
-    //     $('li.luke').removeClass('luke');
-    //     $(newLiLeft).addClass('luke');
+// series plausible actions that Luke could take
+function moveLeftNext() {
+    const newLiLeft = $('li')[currentLukeIndex() - 1];
+    // const newLiLeftClass = $($('li')[currentLukeIndex() - 1]).attr('class');
+    // const originalLiClass = $($('li')[currentLukeIndex()]).attr('class');
     //
-    //     // remove other residual effects from all previous possible actions
-    //     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-    //
-    //     // adding real direction actions before sword by overlapping onto top of .luke
-    //     $(newLiLeft).addClass('lukeLeft');
-    //
-    // } else {
-    //     // use .luke as position reference and add real actions by overlapping onto top
-    //     $('li.luke').removeClass('luke');
-    //     $(newLiLeft).addClass('luke');
-    //
-    //     // remove other residual effects from all previous possible actions at the instance from without Sword to with Sword
-    //     $('li').removeClass('lukeLeft lukeRight lukeUp lukeDown');
-    //
-    //     // remove other residual effects from all previous possible actions with Sword
-    //     $('li').removeClass('lukeLeftSword lukeRightSword lukeUpSword lukeDownSword');
-    //
-    //     // remove luke killing action
-    //     $('li').removeClass('lukeKill');
-    //
-    //     // adding real direction actions after sword by overlapping onto top of .luke
-    //     $(newLiLeft).addClass('lukeLeftSword');
-    // }
+    // console.log(newLiLeftClass);
+    // console.log(originalLiClass);
 
+    var extractOriginalClass = extractOriginalLiClass();
+
+    // use .luke as position reference and add real actions by overlapping onto top
     $('li.luke').removeClass('luke');
     $(newLiLeft).addClass('luke');
 
-    for (var i = 0; i < extractTxt.length; i++) {
-        $('li').removeClass(extractTxt[i]);
+    // remove other residual effects from all previous possible actions
+    for (var i = 0; i < extractOriginalClass.length; i++) {
+        $('li').removeClass(extractOriginalClass[i]);
     }
 
     if (swordOrNot === false) {
+        // adding real direction actions before sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeft');
     } else {
+        // adding real direction actions after sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeftSword');
     }
 }
