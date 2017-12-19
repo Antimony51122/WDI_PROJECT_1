@@ -44,7 +44,7 @@ function currentLukeIndex() {
     return currentLiIndex;
 }
 
-// defining function extracting the original li element's class
+// defining function extracting the original <li> element's class
 function extractOriginalLiClass() {
     const originalLiClass = $($('li')[currentLukeIndex()]).attr('class');
 
@@ -72,7 +72,7 @@ function extractOriginalLiClass() {
     return extractTxt
 }
 
-// removing the original li element's class
+// removing the original <li> element's class
 function removePreviousClass() {
     var originalLiClass = extractOriginalLiClass();
 
@@ -162,24 +162,18 @@ function pushLeftNext() {
     $(newLiLeft).addClass('luke');
 
     if (swordOrNot === false) {
-        // adding real direction actions before sword by overlapping onto top of .luke
+        // adding real direction actions before having sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeft');
-
-        // adding available floor & removing box on left corresponding position
-        $(newLiLeft).addClass('a').removeClass('b');
-
-        // adding box & removing available floor on left next after corresponding position
-        $(newLiLeftBefore).addClass('b').removeClass('a');
     } else {
-        // adding real direction actions after sword by overlapping onto top of .luke
+        // adding real direction actions after having sword by overlapping onto top of .luke
         $(newLiLeft).addClass('lukeLeftSword');
-
-        // adding available floor & removing box on left corresponding position
-        $(newLiLeft).addClass('a').removeClass('b');
-
-        // adding box & removing available floor on left next after corresponding position
-        $(newLiLeftBefore).addClass('b').removeClass('a');
     }
+
+    // adding available floor & removing box on left corresponding position
+    $(newLiLeft).addClass('a').removeClass('b');
+
+    // adding box & removing available floor on left next after corresponding position
+    $(newLiLeftBefore).addClass('b').removeClass('a');
 }
 
 function pushRightNext() {
@@ -193,13 +187,12 @@ function pushRightNext() {
 
     if (swordOrNot === false) {
         $(newLiRight).addClass('lukeRight');
-        $(newLiRight).addClass('a').removeClass('b');
-        $(newLiRightAfter).addClass('b').removeClass('a');
     } else {
         $(newLiRight).addClass('lukeRightSword');
-        $(newLiRight).addClass('a').removeClass('b');
-        $(newLiRightAfter).addClass('b').removeClass('a');
     }
+
+    $(newLiRight).addClass('a').removeClass('b');
+    $(newLiRightAfter).addClass('b').removeClass('a');
 }
 
 function pushUpNext() {
@@ -213,13 +206,12 @@ function pushUpNext() {
 
     if (swordOrNot === false) {
         $(newLiUp).addClass('lukeUp');
-        $(newLiUp).addClass('a').removeClass('b');
-        $(newLiUpAbove).addClass('b').removeClass('a');
     } else {
         $(newLiUp).addClass('lukeUpSword');
-        $(newLiUp).addClass('a').removeClass('b');
-        $(newLiUpAbove).addClass('b').removeClass('a');
     }
+
+    $(newLiUp).addClass('a').removeClass('b');
+    $(newLiUpAbove).addClass('b').removeClass('a');
 }
 
 function pushDownNext() {
@@ -233,13 +225,12 @@ function pushDownNext() {
 
     if (swordOrNot === false) {
         $(newLiDown).addClass('lukeDown');
-        $(newLiDown).addClass('a').removeClass('b');
-        $(newLiDownBelow).addClass('b').removeClass('a');
     } else {
         $(newLiDown).addClass('lukeDownSword');
-        $(newLiDown).addClass('a').removeClass('b');
-        $(newLiDownBelow).addClass('b').removeClass('a');
     }
+
+    $(newLiDown).addClass('a').removeClass('b');
+    $(newLiDownBelow).addClass('b').removeClass('a');
 }
 
 function pickSword() {
@@ -294,11 +285,11 @@ $(document).keydown(function(e){ // 'e' for event
         && ($($('li')[currentLukeIndex() + 1]).attr('class') !== 'b')) {
         moveRightNext();
         pickSword();
-    } else if ((e.which === 38) // down arrow
-        // the block next in the moving direction is nether wall nor box
+    } else if ((e.which === 38) // up arrow
+        // the block next in the moving direction is a box
         && ($($('li')[currentLukeIndex() - row0.length]).attr('class') !== 'w')
         && ($($('li')[currentLukeIndex() - row0.length]).attr('class') === 'b')
-        // the block 2 next after can neither be wall, box, sword nor goal
+        // the second block next after can neither be wall, box, sword nor goal
         && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 'w')
         && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 'b')
         && ($($('li')[currentLukeIndex() - (row0.length * 2)]).attr('class') !== 's')
