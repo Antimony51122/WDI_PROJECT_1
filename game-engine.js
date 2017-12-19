@@ -258,9 +258,11 @@ function murderAttempt() {
 
     $('li.luke').addClass('lukeKill');
     // $('li.luke').removeClass('luke');
+    console.log($($('li')[currentLukeIndex() + 1]).attr('class'));
     if ($($('li')[currentLukeIndex() + 1]).attr('class') === 'g') {
         murderFatherOrNot = true;
     }
+    console.log(murderFatherOrNot);
 }
 
 $(document).keydown(function(e){ // 'e' for event
@@ -330,6 +332,8 @@ $(document).keydown(function(e){ // 'e' for event
     // console.log($($('li')[currentLukeIndex()]).attr('class'));
     // console.log(joinDarkCondition());
     // console.log(murderFatherCondition());
+    murderFatherCondition();
+    joinDarkCondition();
 });
 
 
