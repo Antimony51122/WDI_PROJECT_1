@@ -118,7 +118,7 @@ Using pushing up when the block unit next in the moving direction is a box and t
         pickSword();
     } else if ...
 ```
-> `row0` is the one of the arrays defining the maze shown above, `$('li')[currentLukeIndex() - row0.length]` basically represents the `<li>` element right above.
+> `row0` is the one of the arrays defining the maze shown above, `$('li')[currentLukeIndex() - row0.length]` basically represents the `<li>` element right above and `$('li')[currentLukeIndex() - (row0.length * 2)]` represents the `<li>` element 2 blocks above. 
 
 Lastly, since the situation of two boxes lining or wall behind box hasn't been defined among the legal moves, the action simply cannot happen when the player press the corresponded key of movements in a certain direction.
 
