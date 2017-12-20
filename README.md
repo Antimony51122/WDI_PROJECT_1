@@ -73,6 +73,10 @@ function dropCharacter() {
 ```
 The game has been initialised with the two functions above:
 
+<p align="center">
+    <img src="./images/game_board.png" align="center"  />
+</p>
+
 ```js
 // waiting for the dom to be loaded then running the init function
 window.addEventListener('DOMContentLoaded', $(init));
