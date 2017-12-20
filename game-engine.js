@@ -342,7 +342,7 @@ function joinDarkCondition() {
         (($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeLeftSword')
             || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeRightSword')
             || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeUpSword')
-            || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeDownSword')) ) {
+            || ($($('li')[currentLukeIndex()]).attr('class') === 'g luke lukeDownSword'))) {
         joinDarkOrNot = true;
     }
     if (joinDarkOrNot === true) {
