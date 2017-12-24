@@ -334,6 +334,7 @@ $(document).keydown(function(e){ // 'e' for event
     // console.log(murderFatherCondition());
     murderFatherCondition();
     joinDarkCondition();
+    // these two checking condition functions has to go after all plausible movements
 });
 
 
