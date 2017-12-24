@@ -330,8 +330,8 @@ $(document).keydown(function(e){ // 'e' for event
         murderAttempt();
     }
     // console.log($($('li')[currentLukeIndex()]).attr('class'));
-    // console.log(joinDarkCondition());
     // console.log(murderFatherCondition());
+    // console.log(joinDarkCondition());
     murderFatherCondition();
     joinDarkCondition();
     // these two checking condition functions has to go after all plausible movements
