@@ -307,20 +307,3 @@ function murderAttempt() {
     }
 }
 ```
-
-
-
-```csharp
-namespace test
-{
-	public class testPos
-	{
-		private void helloWorld()
-		{
-			string yuxuan = "chopin king";
-			Output(yuxuan);
-			
-		}
-	}
-}
-```
