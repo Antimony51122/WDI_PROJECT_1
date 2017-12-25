@@ -307,3 +307,28 @@ function murderAttempt() {
     }
 }
 ```
+
+### Appearance
+
+The animations in game build involvded sprites to show various postures. These are the postures of four directions before fetching the light saber:
+
+> Four directions corresponding to four keys: 
+> 
+> - left arrow: `(e.which === 37)`
+> - right arrow: `(e.which === 39)`
+> - up arrow: `(e.which === 38)`
+> - down arrow: `(e.which === 40)`
+
+<p align="center">
+    <img src="./images/lukePostures/lukeLeft.gif" align="center"  />
+    <img src="./images/lukePostures/lukeRight.gif" align="center"  />
+    <img src="./images/lukePostures/lukeUp.gif" align="center"  />
+    <img src="./images/lukePostures/lukeDown.gif" align="center"  />
+</p>
+
+> P.S: please pay perticular attention to the down animation: apart from ordinary movements, Luke has performed a squat dogding posture after that. In addition, if you keep this posture for a longer time, he will pose a smugshrug posture mocking that the player still haven't found the light saber.
+
+Four postures **after picking the light saber**:
+
+
+
