@@ -338,6 +338,11 @@ Four postures **after picking the light saber**:
 </p>
 
 > P.S: mind that the squating and dodging action has been maintained for the down action.
- 
+
+Lastly, the luke **killing attempt**:
+
+<p align="center">
+    <img src="./images/lukePostures/lukeKillRight.gif" align="center"  />
+</p>
 
 
