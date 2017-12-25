@@ -310,7 +310,9 @@ function murderAttempt() {
 
 ### Appearance
 
-The animations in game build involvded sprites to show various postures. These are the postures of four directions before fetching the light saber:
+#### Luke
+
+The animations in game build involvded sprites to show various postures. These are the postures of four directions **before fetching the light saber**:
 
 > Four directions corresponding to four keys: 
 > 
@@ -343,6 +345,14 @@ Lastly, the luke **killing attempt**:
 
 <p align="center">
     <img src="./images/lukePostures/lukeKillRight.gif" align="center"  />
+</p>
+
+#### Darth Vadar
+
+Darth Vadar remains not moved and keep shining during the game:
+
+<p align="center">
+    <img src="./images/darthVadar.gif" align="center"  />
 </p>
 
 
