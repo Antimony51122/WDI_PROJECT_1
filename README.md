@@ -330,5 +330,14 @@ The animations in game build involvded sprites to show various postures. These a
 
 Four postures **after picking the light saber**:
 
+<p align="center">
+    <img src="./images/lukePostures/lukeSwordLeft.gif" align="center"  />
+    <img src="./images/lukePostures/lukeSwordRight.gif" align="center"  />
+    <img src="./images/lukePostures/lukeSwordUp.gif" align="center"  />
+    <img src="./images/lukePostures/lukeSwordDown.gif" align="center"  />
+</p>
+
+> P.S: mind that the squating and dodging action has been maintained for the down action.
+ 
 
 
