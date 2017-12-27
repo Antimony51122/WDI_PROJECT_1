@@ -354,5 +354,3 @@ Darth Vadar remains not moved and keep shining during the game:
 <p align="center">
     <img src="./images/darthVadar.gif" align="center"  />
 </p>
-
-
