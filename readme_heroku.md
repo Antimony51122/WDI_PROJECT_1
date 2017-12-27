@@ -308,18 +308,3 @@ $ heroku open
 ## We Do: Further configuration
 
 This is a very simple way to deploy a static site. We can define many more options however we will look at this when we deploy a server application.
-
-<br>
-
-##Closure
-
-Summary of the lesson.
-
-<br>
-
-###Questions
-
-Any questions?
-
-<br>
-
