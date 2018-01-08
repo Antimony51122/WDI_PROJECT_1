@@ -341,7 +341,7 @@ Four postures **after picking the light saber**:
 
 > P.S: mind that the squating and dodging action has been maintained for the down action.
 
-Lastly, the luke **killing attempt**:
+Lastly, the luke **killing attempt** (P.S: Luke needs to stand left next unit cell to Darth Vadar in order to kill him):
 
 <p align="center">
     <img src="./images/lukePostures/lukeKillRight.gif" align="center"  />
