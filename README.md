@@ -330,7 +330,7 @@ The animations in game build involvded sprites to show various postures. These a
 
 > P.S: please pay perticular attention to the down animation: apart from ordinary movements, Luke has performed a squat dogding posture after that. In addition, if you keep this posture for a longer time, he will pose a smugshrug posture mocking that the player still haven't found the light saber.
 
-Four postures **after picking the light saber**:
+Various appearance via four different orientations **after picking the light saber**:
 
 <p align="center">
     <img src="./images/lukePostures/lukeSwordLeft.gif" align="center"  />
