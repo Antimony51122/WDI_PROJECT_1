@@ -6,6 +6,8 @@
 
 By utilising HTML5, CSS3 and jQuery I designed and built a stylised, collision-based JavaScript game named "". This is a maze game based on star war plot of the story between Luke and his father Darth Vadar.
 
+> Currently deploying to heroku: [https://ancient-escarpment-60292.herokuapp.com](https://ancient-escarpment-60292.herokuapp.com)
+
 ### Win Logic
 
 The win logic consists of two stages of objectives:
