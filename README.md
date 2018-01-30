@@ -2,7 +2,7 @@
     <img src="./images/cover_page.png" align="center"  />
 </p>
 
-# Star War Maze Game
+# Star War Maze Game 
 
 By utilising HTML5, CSS3 and jQuery I designed and built a stylised, collision-based JavaScript game named "". This is a maze game based on star war plot of the story between Luke and his father Darth Vadar.
 
